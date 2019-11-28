@@ -1,8 +1,8 @@
 from tkinter import *
 from socket import *
 from threading import Thread
+from time import *
 
-# import tkinter.messagebox
 
 tk = Tk()
 tk.title("Tic Tac Toe")
@@ -11,17 +11,17 @@ bclick = True
 
 # Connection Setup
 serverName = '10.0.0.124'
-schoolName = '10.220.25.198'
+schoolName = '10.220.26.84'
+homeName = '192.168.50.28'
 portNumber = 1010
 
 tttSocket = socket(AF_INET, SOCK_STREAM)
-tttSocket.connect((serverName, portNumber))
+tttSocket.connect((homeName, portNumber))
 
 
 def receive():
     while 1:
         try:
-            Thread(target=send).start()
             mes = tttSocket.recv(1024).decode()
             output.insert(INSERT, '%s\n' % mes)
             print(mes)
@@ -32,15 +32,14 @@ def receive():
 
 def send():
     mes = textentry.get()
-    output.insert(INSERT, '%s\n' % mes)
-    textentry.delete(0, END)
     if mes == '{quit}':
-        quitMessage = name + "has left the chat!\n"
+        quitMessage = "Nick has left the chat!\n"
         tttSocket.send(quitMessage.encode())
         tttSocket.close()
     else:
+        output.insert(INSERT, '%s\n' % mes)
+        textentry.delete(0, END)
         tttSocket.send(mes.encode())
-        receive()
 
 
 # GUI + Client interaction
@@ -169,12 +168,13 @@ tk.bind('<Return>', lambda event=NONE: sendButton.invoke())
 sendButton = Button(tk, text="Send", command=send)
 sendButton.grid(row=4, column=3, sticky=N)
 
-output.insert(INSERT, "Welcome to TicTacToe chatroom! Please type your name and press enter...\n\n")
-name = input("Please enter name: ")
-tttSocket.send((name.encode()))
-helloMessage = tttSocket.recv(1024).decode()
-output.insert(INSERT, "Hello " + name + "! If you ever want to quit, type {quit} to exit.\n\n")
-output.insert(INSERT, helloMessage)
-
+#output.insert(INSERT, "Welcome to TicTacToe chatroom! Please type your name and press enter...\n\n")
+#name = input("Please enter name: ")
 recThread = Thread(target=receive).start()
+
 tk.mainloop()
+
+
+
+
+
