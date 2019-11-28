@@ -44,11 +44,6 @@ def send():
 
 # GUI + Client interaction
 # _______________________________________________________________________________________
-#def click():
- #   entered_text = textentry.get()
-  #  output.insert(INSERT, '%s\n' % entered_text)
-   # textentry.delete(0, END)
-
 
 def ttt(buttons):
     global bclick
@@ -59,58 +54,57 @@ def ttt(buttons):
         buttons["text"] = "O"
         bclick = True
 
-    elif (button1['text'] == 'X' and button2['text'] == 'X' and button3['text'] == 'X'):
+    elif button1['text'] == 'X' and button2['text'] == 'X' and button3['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button4['text'] == 'X' and button5['text'] == 'X' and button6['text'] == 'X'):
+    elif button4['text'] == 'X' and button5['text'] == 'X' and button6['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button7['text'] == 'X' and button8['text'] == 'X' and button9['text'] == 'X'):
+    elif button7['text'] == 'X' and button8['text'] == 'X' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button1['text'] == 'X' and button5['text'] == 'X' and button9['text'] == 'X'):
+    elif button1['text'] == 'X' and button5['text'] == 'X' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button3['text'] == 'X' and button5['text'] == 'X' and button7['text'] == 'X'):
+    elif button3['text'] == 'X' and button5['text'] == 'X' and button7['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button1['text'] == 'X' and button2['text'] == 'X' and button3['text'] == 'X'):
+    elif button1['text'] == 'X' and button2['text'] == 'X' and button3['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button1['text'] == 'X' and button4['text'] == 'X' and button7['text'] == 'X'):
+    elif button1['text'] == 'X' and button4['text'] == 'X' and button7['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button2['text'] == 'X' and button5['text'] == 'X' and button8['text'] == 'X'):
+    elif button2['text'] == 'X' and button5['text'] == 'X' and button8['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-    elif (button7['text'] == 'X' and button6['text'] == 'X' and button9['text'] == 'X'):
+    elif button7['text'] == 'X' and button6['text'] == 'X' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is X !!!!\n')
 
-
-    elif (button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O'):
+    elif button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button4['text'] == 'X' and button5['text'] == 'O' and button6['text'] == 'X'):
+    elif button4['text'] == 'X' and button5['text'] == 'O' and button6['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button7['text'] == 'X' and button8['text'] == 'O' and button9['text'] == 'X'):
+    elif button7['text'] == 'X' and button8['text'] == 'O' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button1['text'] == 'X' and button5['text'] == 'O' and button9['text'] == 'X'):
+    elif button1['text'] == 'X' and button5['text'] == 'O' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button3['text'] == 'X' and button5['text'] == 'O' and button7['text'] == 'X'):
+    elif button3['text'] == 'X' and button5['text'] == 'O' and button7['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button1['text'] == 'X' and button2['text'] == 'O' and button3['text'] == 'X'):
+    elif button1['text'] == 'X' and button2['text'] == 'O' and button3['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
-    elif (button1['text'] == 'X' and button4['text'] == 'O' and button7['text'] == 'X'):
-        output.insert(INSERT, 'Winner is O !!!!\n')
-
-    elif (button2['text'] == 'X' and button5['text'] == 'O' and button8['text'] == 'X'):
+    elif button1['text'] == 'X' and button4['text'] == 'O' and button7['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
-    elif (button7['text'] == 'X' and button6['text'] == 'O' and button9['text'] == 'X'):
+    elif button2['text'] == 'X' and button5['text'] == 'O' and button8['text'] == 'X':
+        output.insert(INSERT, 'Winner is O !!!!\n')
+
+    elif button7['text'] == 'X' and button6['text'] == 'O' and button9['text'] == 'X':
         output.insert(INSERT, 'Winner is O !!!!\n')
 
 
