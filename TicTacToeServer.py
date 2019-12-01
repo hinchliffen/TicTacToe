@@ -6,31 +6,29 @@ activeConnections = []
 
 
 def accept_incoming_connections(serverSocket):
+    count = 0
     while 1:
         connectionSocket, addr = serverSocket.accept()
         activeConnections.append(connectionSocket)
-        #print(activeConnections)
-        #print("%s:%s has connected." % addr)
+        count = count + 1
+        print("Connections active: "+ str(activeConnections))
+        print(count)
+
         Thread(target=handle_client, args=(connectionSocket, addr)).start()
 
 
 def handle_client(connectionSocket, addr):
-    name = connectionSocket.recv(1024).decode()
-    nameSend = (name + " has joined the chat!")
-    print(nameSend)
-    broadcastConnection(nameSend)
     while 1:
-        quitMessage = name + " has left the chat!\n"
+        quitMessage = "Nick has left the chat!\n"
         message = connectionSocket.recv(1024).decode()
         if message == quitMessage:
-            fqm = print(quitMessage)
+            print(quitMessage)
             removeConnection(connectionSocket)
-            broadcastConnection(fqm)
+            print(activeConnections)
+            broadcastConnection(quitMessage.encode())
         else:
-            readytogo = name + ": " + message
-            print(readytogo)
-
-            broadcastConnection(readytogo)
+            print(message)
+            broadcastConnection(message)
 
 
 def broadcastConnection(message):
