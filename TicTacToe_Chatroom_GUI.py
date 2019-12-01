@@ -3,6 +3,7 @@ from socket import *
 from threading import Thread
 from time import *
 
+#12/1/19 4PM
 bclick = True
 
 def startGUI():
