@@ -5,6 +5,18 @@ tk = Tk()
 tk.title("Tic Tac Toe")
 #https://codereview.stackexchange.com/questions/212699/tic-tac-toe-game-in-python-3-x-using-tkinter-gui-version-2
 bclick = True
+flag = 0
+
+def disableButton():
+    button1.configure(state=DISABLED)
+    button2.configure(state=DISABLED)
+    button3.configure(state=DISABLED)
+    button4.configure(state=DISABLED)
+    button5.configure(state=DISABLED)
+    button6.configure(state=DISABLED)
+    button7.configure(state=DISABLED)
+    button8.configure(state=DISABLED)
+    button9.configure(state=DISABLED)
 
 
 
@@ -42,20 +54,29 @@ def ttt(buttons):
         tkinter.messagebox.showinfo("Player X", "Winner is X!!!")
     elif (button7['text'] == 'X' and button6['text'] == 'X' and button9['text'] == 'X'):
         tkinter.messagebox.showinfo("Player X", "Winner is X!!!")
+    
+    elif(flag == 8):
+        tkinter.messagebox.showinfo("Tic-Tac-Toe", "It is a Tie")
 
     ##Button Clicks for o
-    elif (button1['text'] == 'o' and button2['text'] == 'o' and button3['text'] == 'o' or
-          button4['text'] == 'o' and button5['text'] == 'o' and button6['text'] == 'o' or
-          button7['text'] == 'o' and button8['text'] == 'o' and button9['text'] == 'o' or
-          button1['text'] == 'o' and button5['text'] == 'o' and button9['text'] == 'o' or
-          button3['text'] == 'o' and button5['text'] == 'o' and button7['text'] == 'o' or
-          button1['text'] == 'o' and button2['text'] == 'o' and button3['text'] == 'o' or
-          button1['text'] == 'o' and button4['text'] == 'o' and button7['text'] == 'o' or
-          button2['text'] == 'o' and button5['text'] == 'o' and button8['text'] == 'o' or
-          button1['text'] == 'o' and button4['text'] == 'o' and button7['text'] == 'o' or
-          button2['text'] == 'o' and button5['text'] == 'o' and button8['text'] == 'o' or
-          button7['text'] == 'o' and button6['text'] == 'o' and button9['text'] == 'o'):
-        tkinter.messagebox.showinfo("Player 0", 'Winner is 0 !!!!')
+    elif (button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button4['text'] == 'O' and button5['text'] == 'O' and button6['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player X", "Winner is X!!!")
+    elif (button7['text'] == 'O' and button8['text'] == 'O' and button9['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button1['text'] == 'O' and button5['text'] == 'O' and button9['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button3['text'] == 'O' and button5['text'] == 'O' and button7['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button1['text'] == 'O' and button4['text'] == 'O' and button7['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button2['text'] == 'O' and button5['text'] == 'O' and button8['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
+    elif (button7['text'] == 'O' and button6['text'] == 'O' and button9['text'] == 'O'):
+        tkinter.messagebox.showinfo("Player O", "Winner is O!!!")
 
 
 #Appearce and command of the buttons
@@ -114,5 +135,8 @@ tk.bind('<Return>', lambda event = NONE: sendButton.invoke())
 sendButton =Button(tk, text = "Send", command = click)
 sendButton.grid(row = 4, column = 3, sticky = N)
 
+#restart button 
+sendButton =Button(tk, text = "Restart", command = click)
+sendButton.grid(row = 4, column = 5, sticky = N)
 
 tk.mainloop()
