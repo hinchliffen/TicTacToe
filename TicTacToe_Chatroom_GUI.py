@@ -6,7 +6,7 @@ from time import *
 #12/1/19 4PM
 bclick = True
 
-def startGUI():
+def startGUI(profileName):
     tk = Tk()
     tk.title("Tic Tac Toe")
     # https://codereview.stackexchange.com/questions/212699/tic-tac-toe-game-in-python-3-x-using-tkinter-gui-version-2
@@ -15,12 +15,45 @@ def startGUI():
     # Connection Setup
     serverName = '10.0.0.124'
     schoolName = '10.220.26.84'
-    homeName = '192.168.50.28'
     portNumber = 1010
 
     tttSocket = socket(AF_INET, SOCK_STREAM)
-    tttSocket.connect((homeName, portNumber))
+    tttSocket.connect((serverName, portNumber))
 
+
+    def restart():
+        button1['text'] = " "
+        button2['text'] = " "
+        button3['text'] = " "
+        button4['text'] = " "
+        button5['text'] = " "
+        button6['text'] = " "
+        button7['text'] = " "
+        button8['text'] = " "
+        button9['text'] = " "
+        button1.configure(state=NORMAL)
+        button2.configure(state=NORMAL)
+        button3.configure(state=NORMAL)
+        button4.configure(state=NORMAL)
+        button5.configure(state=NORMAL)
+        button6.configure(state=NORMAL)
+        button7.configure(state=NORMAL)
+        button8.configure(state=NORMAL)
+        button9.configure(state=NORMAL)
+
+
+
+    # Freezes all moves
+    def disable():
+        button1.configure(state=DISABLED)
+        button2.configure(state=DISABLED)
+        button3.configure(state=DISABLED)
+        button4.configure(state=DISABLED)
+        button5.configure(state=DISABLED)
+        button6.configure(state=DISABLED)
+        button7.configure(state=DISABLED)
+        button8.configure(state=DISABLED)
+        button9.configure(state=DISABLED)
 
     # Receives all incoming messages / handles specific messages
     def receive():
@@ -63,6 +96,10 @@ def startGUI():
                     button8['text'] = 'O'
                 if mes == '9,O':
                     button9['text'] = 'O'
+                if mes == 'Winner is X!\n':
+                    disable()
+                if mes == 'Winner is O!\n':
+                    disable()
                 output.insert(INSERT, '%s\n' % mes)
 
 
@@ -72,13 +109,15 @@ def startGUI():
     # Sends chat messages
     def send():
         mes = textentry.get()
+        sendMes = profileName + ": " + mes
+        sendMesgo = sendMes.encode()
         if mes == '{quit}':
-            quitMessage = "Nick has left the chat!\n"
+            quitMessage = profileName+" has left the chat!\n"
             tttSocket.send(quitMessage.encode())
             tttSocket.close()
         else:
             textentry.delete(0, END)
-            tttSocket.send(mes.encode())
+            tttSocket.send(sendMesgo)
 
     # Method to send move of clicked button
     def sendMove(location, type):
@@ -91,7 +130,9 @@ def startGUI():
         winnerEnc = winner.encode()
         tttSocket.send(winnerEnc)
 
-    #def gameWon():
+    def sendOpponent(name):
+        nameEnc = name.encode()
+        tttSocket.send(nameEnc)
 
 
     # Methods for when buttons are clicked
@@ -217,6 +258,9 @@ def startGUI():
     # Creates output box and set it in frame
     output = Text(tk, width=30, wrap=WORD, background="white")
     output.grid(row=1, column=3, rowspan=2, sticky=N + S + E + W)
+    output.insert(INSERT, "Hello " + profileName + "! Welcome to TicTacToe!\n")
+    playerJoin = profileName + " has joined the game!"
+    sendOpponent(playerJoin)
 
     # Create input box and sets it in frame
     textentry = Entry(tk, width=30, bg="white")
@@ -229,6 +273,10 @@ def startGUI():
     # Send button is connnected to the send method
     sendButton = Button(tk, text="Send", command=send)
     sendButton.grid(row=4, column=3, sticky=N)
+
+    # restart button
+    restartButton = Button(tk, text="Restart", command = restart)
+    restartButton.grid(row=4, column=4, sticky=N+W)
 
     # Creates thread to accept connections
     recThread = Thread(target=receive).start()
