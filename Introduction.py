@@ -33,7 +33,7 @@ def startClient():
         TicTacToe_Chatroom_GUI.startGUI(entered)
     else:
         leaderboard.update({entered:0})
-        TicTacToe_Chatroom_GUI.startGUI2(entered)
+        TicTacToe_Chatroom_GUI.startGUI(entered)
 
 
 intro = Tk()
