@@ -1,5 +1,8 @@
 from tkinter import *
+from tkinter import Tk, Label, Button
 import tkinter.messagebox
+import sys
+import os
 
 tk = Tk()
 tk.title("Tic Tac Toe")
@@ -18,7 +21,10 @@ def disableButton():
     button8.configure(state=DISABLED)
     button9.configure(state=DISABLED)
 
-
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+    
 
 def click():
     entered_text = textentry.get()
@@ -136,7 +142,9 @@ sendButton =Button(tk, text = "Send", command = click)
 sendButton.grid(row = 4, column = 3, sticky = N)
 
 #restart button 
-sendButton =Button(tk, text = "Restart", command = click)
-sendButton.grid(row = 4, column = 5, sticky = N)
+sendButton =Button(tk, text = "Restart", command = restart_program)
+sendButton.grid(row = 4, column = 1, sticky = N)
+
+
 
 tk.mainloop()
