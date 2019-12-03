@@ -27,35 +27,22 @@ def printboard():
 
 
 
-def secondpage():
-    second = Toplevel()
+def startClient():
     entered = profile.get()
     if entered in leaderboard:
-        player = Label(second, text="Welcome back " + entered)
-        start = Label(second, text="Start Game?")
-        ok = Button(second, text="Yes!")
-
-        player.pack()
-        start.pack()
-        ok.pack()
+        TicTacToe_Chatroom_GUI.startGUI(entered)
     else:
         leaderboard.update({entered:0})
-        letsgo = Label(second, text="Welcome new player!")
-        ready = Label(second, text="Ready to start?")
-        alright = Button(second, text="Yes", command=TicTacToe_Chatroom_GUI.startGUI)
-
-        letsgo.pack()
-        ready.pack()
-        alright.pack()
-
+        TicTacToe_Chatroom_GUI.startGUI2(entered)
 
 
 intro = Tk()
 label = Label(intro, text="Welcome to Tic-Tac-Toe!", font=('Times New Roman', '16'))
 label2 = Label(intro, text="Enter your profile name:", font=('Times New Roman', '13'))
 profile = Entry(intro)
-enter = Button(intro, text='Enter', command=secondpage)
+enter = Button(intro, text='Enter', command=startClient)
 board = Button(intro, text='Leaderboard', command=printboard)
+
 
 intro.bind('<Return>', lambda event=NONE: enter.invoke())
 
