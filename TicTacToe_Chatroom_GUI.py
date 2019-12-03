@@ -2,7 +2,11 @@ from tkinter import *
 from socket import *
 from threading import Thread
 from time import *
-
+from tkinter import *
+from tkinter import Tk, Label, Button
+import tkinter.messagebox
+import sys
+import os
 
 tk = Tk()
 tk.title("Tic Tac Toe")
@@ -12,11 +16,16 @@ bclick = True
 # Connection Setup
 serverName = '10.0.0.124'
 schoolName = '10.220.26.84'
-homeName = '192.168.50.28'
+homeName = '192.168.1.192'
 portNumber = 1010
 
 tttSocket = socket(AF_INET, SOCK_STREAM)
 tttSocket.connect((homeName, portNumber))
+
+#Restarting Program
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
 
 # Receives all incoming messages / handles specific messages
 def receive():
@@ -231,10 +240,10 @@ sendButton.grid(row=4, column=3, sticky=N)
 # Creates thread to accept connections
 recThread = Thread(target=receive).start()
 
+#restart button 
+sendButton =Button(tk, text = "Restart", command = restart_program)
+sendButton.grid(row = 4, column = 1, sticky = N)
+
+
 # Starts GUI
 tk.mainloop()
-
-
-
-
-
