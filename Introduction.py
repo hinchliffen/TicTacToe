@@ -13,18 +13,24 @@ leaderboard = {
     'Marcus': 7,
     }
 
-
-def printboard():
-    topboard = Toplevel()
-    title = Label(topboard, text="Top Players:", font=('Times New Roman', '16'))
-    T = Text(topboard, height=20, width=13 )
-    title.pack()
-    T.pack()
+def saveleaderboard():
+    f = open("leaderboard.txt", "w")
     d_sorted_by_value = OrderedDict(sorted(leaderboard.items(), key=lambda t: t[1], reverse=True))
     for k, v in d_sorted_by_value.items():
-        print("%s: %s" % (k, v))
-    T.insert(END,leaderboard)
+      f.write("%s: %s\n" % (k,v))
+    f.close()
 
+
+def trueboard():
+    topboard = Toplevel()
+    title = Label(topboard, text="Top Players:", font=('Times New Roman', '16'))
+    T = Text(topboard, height=20, width=13)
+    title.pack()
+    T.pack()
+    f = open("leaderboard.txt", "r")
+    message = f.read()
+    T.insert(END,message)
+    f.close()
 
 
 def startClient():
@@ -42,7 +48,8 @@ label = Label(intro, text="Welcome to Tic-Tac-Toe!", font=('Times New Roman', '1
 label2 = Label(intro, text="Enter your profile name:", font=('Times New Roman', '13'))
 profile = Entry(intro)
 enter = Button(intro, text='Enter', command=startClient)
-board = Button(intro, text='Leaderboard', command=printboard)
+save = Button(intro, text='Save Scores', command=saveleaderboard)
+board = Button(intro, text='Leaderboard', command=trueboard)
 
 
 intro.bind('<Return>', lambda event=NONE: enter.invoke())
@@ -51,6 +58,7 @@ label.pack()
 label2.pack()
 profile.pack()
 enter.pack()
+save.pack()
 board.pack()
 
 intro.title('Introduction')
