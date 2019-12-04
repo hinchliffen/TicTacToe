@@ -11,7 +11,7 @@ def accept_incoming_connections(serverSocket):
         connectionSocket, addr = serverSocket.accept()
         activeConnections.append(connectionSocket)
         count = count + 1
-        print("Connections active: "+ str(activeConnections))
+        print("Connections active: " + str(activeConnections))
         print(count)
 
         Thread(target=handle_client, args=(connectionSocket, addr)).start()
@@ -22,10 +22,9 @@ def handle_client(connectionSocket, addr):
         quitMessage = "Nick has left the chat!\n"
         message = connectionSocket.recv(1024).decode()
         if message == quitMessage:
-            print(quitMessage)
             removeConnection(connectionSocket)
             print(activeConnections)
-            broadcastConnection(quitMessage.encode())
+            broadcastConnection(message)
         else:
             print(message)
             broadcastConnection(message)
