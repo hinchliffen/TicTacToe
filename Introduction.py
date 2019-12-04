@@ -29,6 +29,7 @@ def printboard():
 
 def startClient():
     entered = profile.get()
+    profile.delete(0, END)
     if entered in leaderboard:
         TicTacToe_Chatroom_GUI.startGUI(entered)
     else:
