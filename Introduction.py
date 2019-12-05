@@ -13,6 +13,13 @@ leaderboard = {
     'Marcus': 7,
     }
 
+def updateboard(x):
+    if x in leaderboard:
+        leaderboard[x] += 1
+    else:
+        leaderboard[x] = 1
+
+
 def saveleaderboard():
     f = open("leaderboard.txt", "w")
     d_sorted_by_value = OrderedDict(sorted(leaderboard.items(), key=lambda t: t[1], reverse=True))
@@ -48,7 +55,6 @@ label = Label(intro, text="Welcome to Tic-Tac-Toe!", font=('Times New Roman', '1
 label2 = Label(intro, text="Enter your profile name:", font=('Times New Roman', '13'))
 profile = Entry(intro)
 enter = Button(intro, text='Enter', command=startClient)
-save = Button(intro, text='Save Scores', command=saveleaderboard)
 board = Button(intro, text='Leaderboard', command=trueboard)
 
 
@@ -58,7 +64,6 @@ label.pack()
 label2.pack()
 profile.pack()
 enter.pack()
-save.pack()
 board.pack()
 
 intro.title('Introduction')
