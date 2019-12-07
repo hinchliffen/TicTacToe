@@ -3,9 +3,9 @@ from socket import *
 from threading import Thread
 from time import *
 
-#12/1/19 4PM
 bclick = True
 associatedName = ''
+gameEnded = 0
 
 
 def startGUI(profileName):
@@ -16,7 +16,6 @@ def startGUI(profileName):
 
     # Connection Setup
     serverName = '10.0.0.124'
-    schoolName = '10.220.26.84'
     portNumber = 1010
 
     tttSocket = socket(AF_INET, SOCK_STREAM)
@@ -129,10 +128,6 @@ def startGUI(profileName):
         winnerEnc = winner.encode()
         tttSocket.send(winnerEnc)
 
-    def addPoint(winner):
-        #call the function in introduction that I write
-        print("win win win")
-
     def sendOpponent(name):
         nameEnc = name.encode()
         tttSocket.send(nameEnc)
@@ -173,67 +168,51 @@ def startGUI(profileName):
         oWinner = 'Winner is O!\n'
         if button1['text'] == 'X' and button2['text'] == 'X' and button3['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button4['text'] == 'X' and button5['text'] == 'X' and button6['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button7['text'] == 'X' and button8['text'] == 'X' and button9['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button1['text'] == 'X' and button5['text'] == 'X' and button9['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button3['text'] == 'X' and button5['text'] == 'X' and button7['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button1['text'] == 'X' and button4['text'] == 'X' and button7['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button3['text'] == 'X' and button6['text'] == 'X' and button9['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button2['text'] == 'X' and button5['text'] == 'X' and button8['text'] == 'X':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         if button1['text'] == 'O' and button2['text'] == 'O' and button3['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button4['text'] == 'O' and button5['text'] == 'O' and button6['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button7['text'] == 'O' and button8['text'] == 'O' and button9['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button1['text'] == 'O' and button5['text'] == 'O' and button9['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button3['text'] == 'O' and button5['text'] == 'O' and button7['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button1['text'] == 'O' and button4['text'] == 'O' and button7['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button3['text'] == 'O' and button6['text'] == 'O' and button9['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
         elif button2['text'] == 'O' and button5['text'] == 'O' and button8['text'] == 'O':
             sendWinner(rWinner)
-            addPoint(associatedName)
 
 
 
@@ -297,12 +276,8 @@ def startGUI(profileName):
     sendButton = Button(tk, text="Send", command=send)
     sendButton.grid(row=4, column=3, sticky=N)
 
-
     # Creates thread to accept connections
     recThread = Thread(target=receive).start()
 
     # Starts GUI
     tk.mainloop()
-
-
-
