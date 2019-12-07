@@ -1,48 +1,47 @@
 from socket import *
 from threading import Thread
 
-
 activeConnections = []
 
-
+# Accepts connections and adds them to activeConnections list
+# Prints out active connections and starts a thread: handle_client
 def accept_incoming_connections(serverSocket):
     count = 0
     while 1:
         connectionSocket, addr = serverSocket.accept()
         activeConnections.append(connectionSocket)
         count = count + 1
-        print("Connections active: "+ str(activeConnections))
+        print("Connections active: " + str(activeConnections))
         print(count)
 
         Thread(target=handle_client, args=(connectionSocket, addr)).start()
 
-
+# Handles the received message from the client
+# Prints message to console then calls broadcastConnection with message-
+# - as input
 def handle_client(connectionSocket, addr):
     while 1:
-        quitMessage = "Nick has left the chat!\n"
         message = connectionSocket.recv(1024).decode()
-        if message == quitMessage:
-            print(quitMessage)
-            removeConnection(connectionSocket)
-            print(activeConnections)
-            broadcastConnection(quitMessage.encode())
-        else:
-            print(message)
-            broadcastConnection(message)
+        print(message)
+        broadcastConnection(message)
 
-
+# Loops through activeConnections and sends
+# message to all connections
 def broadcastConnection(message):
     for i in activeConnections:
         i.send(message.encode())
 
-
+# Loops through activeConnections
+# if connectionSocket is equal to i-
+# -then remove connectionSocket from active connections
 def removeConnection(connectionSocket):
     for i in activeConnections:
         if i == connectionSocket:
             activeConnections.remove(connectionSocket)
 
 
-
+# Main code which creates sockets and listens for connections
+# Starts a thread: accecpt_incoming_connections
 def main():
     serverPort = 1010
     serverSocket = socket(AF_INET, SOCK_STREAM)
