@@ -1,7 +1,7 @@
 # TicTacToe
 ________________________________________________________________________________________________________
 Description:
-# Please write description here.
+This program is an interactive online game of TicTacToe written in Python
 ________________________________________________________________________________________________________
 Getting Started:
 Install: 
@@ -17,7 +17,8 @@ Run:
 5) Have fun!
 
 Features:
-# Please do features there.
+1. A semi functional leaderboard to display top scores
+2. 
 ________________________________________________________________________________________________________
 Demo Video:
 # Please make demo video and post it to youtube, then add the link here.
@@ -27,6 +28,6 @@ References:
 ________________________________________________________________________________________________________
 Team Members:
 1) Nick Hinchliffe - Team leader, Network Programmer
-# 2) ADD NAME HERE - job title here
+# 2) Justin Alicea - Leaderboard Planner, Gui Programmer
 # 3) ADD NAME HERE - job title here
  
