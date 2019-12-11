@@ -28,6 +28,6 @@ References:
 ________________________________________________________________________________________________________
 Team Members:
 1) Nick Hinchliffe - Team leader, Network Programmer
-# 2) Justin Alicea - Leaderboard Planner, Gui Programmer
-# 3) ADD NAME HERE - job title here
+2) Justin Alicea - Leaderboard Planner, Gui Programmer
+3) ADD NAME HERE - job title here
  
