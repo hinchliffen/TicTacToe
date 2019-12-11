@@ -24,7 +24,7 @@ Demo Video:
 # Please make demo video and post it to youtube, then add the link here.
 ________________________________________________________________________________________________________
 References:
-# Please add references
+1. Geeksforgeek: dictionarys, incrementing dictionary values, Python Tnker 
 ________________________________________________________________________________________________________
 Team Members:
 1) Nick Hinchliffe - Team leader, Network Programmer
