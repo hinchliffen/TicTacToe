@@ -24,7 +24,7 @@ Features:
 2. Two players per game
 3. Functioning chatroom between two players
 4. Interactable Tic-Tac-Toe game 
-5. 'Quit' command that exits the game
+5. 'Quit' command that exits the game ({quit})
 6. Introduction page that takes in your entered name 
 
 
