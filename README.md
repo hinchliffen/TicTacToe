@@ -18,7 +18,6 @@ Run:
 
 Features:
 1. A semi functional leaderboard to display top scores
-2. https://www.geeksforgeeks.org/
 
 ________________________________________________________________________________________________________
 Demo Video:
