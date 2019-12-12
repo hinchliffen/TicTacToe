@@ -35,6 +35,6 @@ https://stackoverflow.com/questions/6171493/how-to-set-the-button-sticky-propert
 ________________________________________________________________________________________________________
 Team Members:
 1) Nick Hinchliffe - Team leader, Network Programmer
-2) Justin Alicea - Leaderboard Planner, Gui Programmer
+2) Justin Alicea - Leaderboard Planner
 3) Marcus Kwong - Board and Display Designer
  
