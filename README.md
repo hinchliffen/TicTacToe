@@ -27,6 +27,10 @@ ________________________________________________________________________________
 References:
 1. Geeksforgeek: dictionarys, incrementing dictionary values, Python Tnker 
 https://www.geeksforgeeks.org/
+2. Used to create buttons for the board
+https://codereview.stackexchange.com/questions/212699/tic-tac-toe-game-in-python-3-x-using-tkinter-gui-version-2
+3. Used for the sytax of the buttons
+https://stackoverflow.com/questions/6171493/how-to-set-the-button-sticky-property-properly
 
 ________________________________________________________________________________________________________
 Team Members:
