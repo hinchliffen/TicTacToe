@@ -1,7 +1,10 @@
 # TicTacToe
 ________________________________________________________________________________________________________
 Description:
-This program is an interactive online game of TicTacToe written in Python
+This program is an interactive online game of TicTacToe written in Python. Two players enter the Tic-Tac-Toe
+serve and play a game of Tic-Tac-Toe, they can use the chatroom feature to talk with one another and when they 
+are done they can 'quit'. A leaderboard is used to keep track of scores and your name is entered on the introduction
+page.
 ________________________________________________________________________________________________________
 Getting Started:
 Install: 
@@ -18,10 +21,18 @@ Run:
 
 Features:
 1. A semi functional leaderboard to display top scores
+2. Two players per game
+3. Functioning chatroom between two players
+4. Interactable Tic-Tac-Toe game 
+5. 'Quit' command that exits the game
+6. Introduction page that takes in your entered name 
+
 
 ________________________________________________________________________________________________________
 Demo Video:
 https://youtu.be/U1GjXSO5-II
+
+Note: The top score for the leaderboard button are stored in the leaderboard text file. 
 ________________________________________________________________________________________________________
 References:
 1. Geeksforgeek: dictionarys, incrementing dictionary values, Python Tnker 
